@@ -3,6 +3,7 @@ var fs = require('fs');
 
 var main_controller = {};
 var controllersPath = process.cwd() + '/app/controllers';
+
 fs.readdirSync(controllersPath).forEach(function (file) {
     if (file.match(/\.js$/)) {
         main_controller[file.split('.')[0].toLowerCase()] =
@@ -14,7 +15,7 @@ var esgazete_controllers = {};
 var esgazete_controllersPath = process.cwd() + '/app/controllers/esgazete';
 fs.readdirSync(esgazete_controllersPath).forEach(function (file) {
     if (file.match(/\.js$/)) {
-        uludag_controllers[file.split('.')[0].toLowerCase()] =
+        esgazete_controllers[file.split('.')[0].toLowerCase()] =
             require(esgazete_controllersPath + '/' + file);
     }
 });

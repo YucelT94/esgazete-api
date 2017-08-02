@@ -1,8 +1,8 @@
 var request = require('request');
 var cheerio = require('cheerio');
-var url = 'https://eksisozluk.com/basliklar/gundem';
+var url = 'http://www.esgazete.com/';
 
-exports.popular = function (req, res, next) {
+exports.general = function (req, res, next) {
     request(url, function (err, response, body) {
         if (err) {
             return next(err);
@@ -12,17 +12,13 @@ exports.popular = function (req, res, next) {
         }
         $ = cheerio.load(body);
 
-
-        var links = $('div#content.instapaper_body ul.topic-list li')
+        var links = $('div.carousel-inner div.item')
             .map(function (i, e) {
-                var entryCount = $(e).find('small');
                 var tds = $(e).find('a');
                 return {
-
-                    entryTitle: $(tds[0]).text(),
-                    entryUrl: $(tds[0]).attr('href'),
-                    entryCount: $(entryCount[0]).text(),
-                    source: 'eksi',
+                    title: $(tds[0]).text().replace(/\s+/g, ' ').trim(),
+                    url:   $(tds[0]).attr('href'),
+                    picUrl: $(tds[0]).find('img').attr('src'),
                 };
             })
             .get() // get basic JSONArray
