@@ -11,7 +11,7 @@ Esgazete için web servis.
 Başlıklar için
 
 Bütün Kategoriler:
-https://esgazete-api.herokuapp.com/esgazete/category
+https://esgazete-api.herokuapp.com/esgazete
 
 Gündem:
 https://esgazete-api.herokuapp.com/esgazete/agenda

@@ -24,7 +24,7 @@ module.exports = function (app) {
     var router = express.Router();
     router.route('/').get(main_controller.main.index);
 
-    router.route('/esgazete/category').get(esgazete_controllers.category.category);
+    router.route('/esgazete').get(esgazete_controllers.category.category);
 
     router.route('/esgazete/general').get(esgazete_controllers.general.general);
     router.route('/esgazete/turkey').get(esgazete_controllers.turkey.turkey);
